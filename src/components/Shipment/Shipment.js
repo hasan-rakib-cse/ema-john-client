@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
 import './Shipment.css'
 import { UserContext } from '../UserContext/UserContext';
@@ -6,6 +7,7 @@ import { clearLocalShoppingCart, getDatabaseCart } from '../../utilities/databas
 
 const Shipment = () => {
 
+  const navigate = useNavigate();
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -27,6 +29,7 @@ const Shipment = () => {
           console.log(data);
           alert('your order placed successfully');
           clearLocalShoppingCart(); // shipment e click korle order place hoea jabe tokhon amra cart theke items clear kore dibo.
+          navigate("/"); // after shipment completed, we view Home Page.
         }
       })
 
