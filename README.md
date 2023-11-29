@@ -1,5 +1,3 @@
-#### clone of Amazon
+only copy existing project from ema-john-fullstack to Hosting.
 
-###### --> Use Dynmic Routing
-###### --> Use Browser Local Storage for Database
-###### --> Use Firebase for Authentication
+This repository will he hosted in Render App (render.com).
