@@ -8,18 +8,20 @@ import './Shop.css';
 import Product from '../Product/Product';
 import Cart from '../Cart/Cart';
 import { addToDatabaseCart, getDatabaseCart } from '../../utilities/databaseManager';
+import { faL } from '@fortawesome/free-solid-svg-icons';
+
+import loadingImage from '../../images/loadingDribbble.gif'
 
 const Shop = () => {
 
     const [products, setProducts] = useState([]);
-    const [cart, setCart] = useState([])
+    const [cart, setCart] = useState([]);
 
     // server theke data load korbo. sei data gulo fake data r bodole use korbo.
     useEffect(() => {
         fetch('https://ema-john-server-yz24.onrender.com/products')
             .then(res => res.json())
             .then(data => setProducts(data))
-
     }, [])
 
 
@@ -85,6 +87,11 @@ const Shop = () => {
         <div className='twin-container'>
             <Row>
                 <Col className="product-container" xs={{ span: 12, order: 2 }} lg={{ span: 9, order: 1 }}>
+                    {products.length === 0  && 
+                        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                            <img src={loadingImage} alt="Loading_Image" />
+                        </div>
+                    }
                     {
                         products.map(product => <Product addProduct={handleAddProduct} showAddToCart={true} key={product.key} product={product} />)
                     }

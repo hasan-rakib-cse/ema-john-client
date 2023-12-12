@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+import loadingImage from '../../images/loadingDribbble.gif'
+
 import Product from '../Product/Product';
 
 const ProductDetail = () => {
@@ -14,16 +16,21 @@ const ProductDetail = () => {
     useEffect(() => {
       fetch(`https://ema-john-server-yz24.onrender.com/product/${productKey}`)
       .then(res => res.json())
-      .then(data => setProduct(data))
-      setIsLoading(false)
+      .then(data => {
+        setProduct(data)
+        setIsLoading(false)
+      })
   
     }, [productKey]);
 
   return (
     <div>
         <h1>Your Product Details</h1>
-        {isLoading && <p>Loading......</p>}
-        <Product showAddToCart={false} product={product} />
+        {isLoading?
+        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+            <img src={loadingImage} alt="Loading_Image" />
+        </div> : <Product showAddToCart={false} product={product} />}
+        
     </div>
   )
 }
