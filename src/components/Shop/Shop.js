@@ -17,7 +17,7 @@ const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
 
-    // server theke data load korbo. sei data gulo fake data r bodole use korbo.
+    // server theke data load korbo. sei data gulo fake data r bodole use korbo
     useEffect(() => {
         fetch('https://ema-john-server-yz24.onrender.com/products')
             .then(res => res.json())
