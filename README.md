@@ -58,7 +58,7 @@
     ----> The form includes Name, Price, Quantity and Image.
 
 ### Packages used
-    ----> We used some packages
+    ---->   We used some packages
         1.  React 18.2.0
         2.  React Bootstrap 2.9.0
         3.  React Router 6.16.0
