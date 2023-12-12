@@ -15,9 +15,7 @@
             c.  Facebook
 
     2.      Use React Router for Dynamic Routing
-    3.      Use browsers localStorage for storing data.
-    4.      
-    5.      
+    3.      Use browsers localStorage for storing data
 
 ### This project contains some pages below:
     1.      Home Page (index.html)
