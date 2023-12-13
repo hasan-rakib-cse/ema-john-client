@@ -7,6 +7,8 @@ import { clearLocalShoppingCart, getDatabaseCart } from '../../utilities/databas
 
 const Shipment = () => {
 
+  document.title = "Shipment";
+
   const navigate = useNavigate();
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 

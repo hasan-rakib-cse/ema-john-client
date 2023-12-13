@@ -2,6 +2,8 @@ import React from 'react'
 
 const ManageInventory = () => {
 
+  document.title = "Manage Inventory";
+
   const product = {}
 
   // 1 ta 1 ta kore data, database e save korbo.

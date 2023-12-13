@@ -14,6 +14,8 @@ import loadingImage from '../../images/loadingDribbble.gif'
 
 const Shop = () => {
 
+    document.title = "Shop More";
+
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
 
@@ -89,7 +91,7 @@ const Shop = () => {
                 <Col className="product-container" xs={{ span: 12, order: 2 }} lg={{ span: 9, order: 1 }}>
                     {products.length === 0  && 
                         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                            <img src={loadingImage} alt="Loading_Image" />
+                            <img style={{width: '50%', height: 'auto'}} src={loadingImage} alt="Loading_Image" />
                         </div>
                     }
                     {

@@ -1,6 +1,8 @@
 import React from 'react'
 
 const Home = () => {
+  document.title = "Ema John";
+
   return (
     <div style={{textAlign: 'center'}}>
         <h1>ema-john Company</h1>

@@ -6,6 +6,9 @@ import loadingImage from '../../images/loadingDribbble.gif'
 import Product from '../Product/Product';
 
 const ProductDetail = () => {
+
+  document.title = "Product Details";
+
     const params = useParams();
     const productKey = params.key
 
@@ -28,7 +31,7 @@ const ProductDetail = () => {
         <h1>Your Product Details</h1>
         {isLoading?
         <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-            <img src={loadingImage} alt="Loading_Image" />
+            <img style={{width: '40%', height: 'auto'}} src={loadingImage} alt="Loading_Image" />
         </div> : <Product showAddToCart={false} product={product} />}
         
     </div>

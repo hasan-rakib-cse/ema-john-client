@@ -9,6 +9,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 const Review = () => {
+
+  document.title = "Order Reviews";
+
   const [cart, setCart] = useState([]);
   const [orderPlaced, setOrderPlaced] = useState(false);
 

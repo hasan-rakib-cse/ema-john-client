@@ -7,6 +7,8 @@ import { createUserWithEmailPassword, handleFbSignIn, handleGoogleSignIn, handle
 
 function Login() {
 
+  document.title = "User Login";
+
   const [loading, setIsLoading] = useState(true);
   const [newUser, setNewUser] = useState(false);
 
