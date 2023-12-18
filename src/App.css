@@ -25,6 +25,9 @@ body {
   height: 100vh;
   width: 100vw; */
 }
+.App.margin {
+  margin: 30px auto;
+}
 
 .App form {
   width: 30vw;

@@ -9,7 +9,7 @@ const PrivateRoute = ({ children }) => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
     // return loggedInUser.email ? <Navigate to="/login" state ={{from: location}} replace></Navigate> : children;
-    return loggedInUser.email ? children : <Navigate to='/login' state={{from: location}} replace />;
+    return (loggedInUser.email || sessionStorage.getItem('token')) ? children : <Navigate to='/login' state={{from: location}} replace />;
     // return loggedInUser.email ? children : <Navigate to={redirectTo} replace state={{ from: location }} />;
     // return loggedInUser.email ? children : <Navigate to="/login" replace state={{ from: location }} />;
 }

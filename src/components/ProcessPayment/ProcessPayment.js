@@ -13,7 +13,7 @@ function ProcessPayment() {
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("https://ema-john-server-yz24.onrender.com/create-payment-intent", {
+        fetch("http://localhost:4000/create-payment-intent", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
@@ -31,7 +31,7 @@ function ProcessPayment() {
     };
 
     return (
-        <div className="App">
+        <div className="App margin">
             {clientSecret && (
                 <Elements options={options} stripe={stripePromise}>
                     <SimpleCardForm />
