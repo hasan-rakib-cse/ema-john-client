@@ -7,7 +7,7 @@ import SimpleCardForm from './SimpleCardForm';
 // recreating the `Stripe` object on every render.
 const stripePromise = loadStripe('pk_test_51OOe0mH4LAmM9WWUTfBZdRaYc7kpVq4sa1oRS2xU8CGFOu43Ftr8mOPjJpEBs7GN5j8i8bv5jsUZAyNZjaaehucG00sZjwFAxZ');
 
-function ProcessPayment() {
+function ProcessPayment({handlePayment}) {
 
     const [clientSecret, setClientSecret] = useState("");
 
@@ -34,7 +34,7 @@ function ProcessPayment() {
         <div className="App margin">
             {clientSecret && (
                 <Elements options={options} stripe={stripePromise}>
-                    <SimpleCardForm />
+                    <SimpleCardForm handlePayment={handlePayment} />
                 </Elements>
             )}
         </div>

@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
-import {
-  PaymentElement,
-  useStripe,
-  useElements
-} from "@stripe/react-stripe-js";
+import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
-export default function SimpleCardForm() {
+export default function SimpleCardForm({handlePayment}) {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -58,9 +54,13 @@ export default function SimpleCardForm() {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: "https://ema-john-client.onrender.com/shipment",
+        // return_url: "https://ema-john-client.onrender.com",
+        return_url: "http://localhost:3000/shipment",
       },
     });
+
+    var paymentElement = elements.getElement('payment');
+    console.log(paymentElement);
 
     // This point will only be reached if there is an immediate error when
     // confirming the payment. Otherwise, your customer will be redirected to

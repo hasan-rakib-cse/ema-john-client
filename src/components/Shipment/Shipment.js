@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
 import './Shipment.css'
@@ -12,12 +12,23 @@ const Shipment = () => {
 
   const navigate = useNavigate();
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-
+  const [shippingData, setShippingData] = useState(null);
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = data => {
+
+  const onSubmit = (data) => {
+    setShippingData(data);
+  }
+
+  const handlePaymentSuccess = (paymentId) => {
 
     const saveCart = getDatabaseCart();
-    const orderDetails = { ...loggedInUser, products: saveCart, shipment: data, orderTime: new Date() };
+    const orderDetails = { 
+      ...loggedInUser, 
+      products: saveCart, 
+      shipment: shippingData, 
+      orderTime: new Date(),
+      paymentId
+     };
 
     fetch('https://ema-john-server-yz24.onrender.com/addOrder', {
       method: 'POST',
@@ -35,13 +46,12 @@ const Shipment = () => {
           navigate("/"); // after shipment completed, we view Home Page.
         }
       })
-
   }
 
   return (
 
     <div className="row">
-      <div className="col-md-6">
+      <div className="col-md-6" style={{display: shippingData ? 'none' : 'block'}}>
         <div className='ship-form-area'>
           <form className='ship-form' onSubmit={handleSubmit(onSubmit)}>
             <input defaultValue={loggedInUser.name} {...register("name", { required: true })} placeholder='name' />
@@ -60,8 +70,8 @@ const Shipment = () => {
           </form>
         </div>
       </div>
-      <div className="col-md-6">
-        <ProcessPayment />
+      <div className="col-md-6" style={{display: shippingData ? 'block' : 'none'}}>
+        <ProcessPayment handlePayment={handlePaymentSuccess} />
       </div>
     </div>
 
